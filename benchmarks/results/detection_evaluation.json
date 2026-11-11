@@ -1,0 +1,305 @@
+{
+  "config": {
+    "hours": 6.0,
+    "devices": 20,
+    "seeds": [
+      1,
+      2,
+      3
+    ],
+    "anomaly_rate": 2.0,
+    "intensity": 1.0,
+    "grace": 180.0,
+    "out": "C:\\Users\\zaki\\AppData\\Local\\Claude-Data\\claude_pzs8sxrjxfjjc\\scratch-workspaces\\5176ea35-54ad-47de-8c51-f6aafae24678\\73925607-8a64-4e01-9d2d-422b06ed6349\\scratch-2026-11-10-cf03d6\\StreamPulse-Engine\\benchmarks\\results\\detection_evaluation.json"
+  },
+  "environment": {
+    "python": "3.12.10",
+    "machine": "AMD64",
+    "processor": "Intel64 Family 6 Model 60 Stepping 3, GenuineIntel"
+  },
+  "engine_events_per_second": 32625.19746456807,
+  "summary": {
+    "threshold": {
+      "alerts": 74,
+      "precision": 1.0,
+      "recall": 0.11811023622047244,
+      "false_positive_rate": 0.0,
+      "false_alerts_per_device_hour": 0.0,
+      "median_delay_s": 0.0,
+      "by_type": {
+        "temperature_spike": {
+          "category": "sudden",
+          "episodes": 109,
+          "detected": 21,
+          "recall": 0.1926605504587156,
+          "recall_during": 0.1926605504587156,
+          "median_delay_s": 0.0,
+          "p90_delay_s": 0.0
+        },
+        "vibration_burst": {
+          "category": "sudden",
+          "episodes": 92,
+          "detected": 15,
+          "recall": 0.16304347826086957,
+          "recall_during": 0.16304347826086957,
+          "median_delay_s": 0.0,
+          "p90_delay_s": 1.0
+        },
+        "pressure_drop": {
+          "category": "sudden",
+          "episodes": 82,
+          "detected": 9,
+          "recall": 0.10975609756097561,
+          "recall_during": 0.10975609756097561,
+          "median_delay_s": 0.0,
+          "p90_delay_s": 44.0
+        },
+        "power_surge": {
+          "category": "sudden",
+          "episodes": 65,
+          "detected": 12,
+          "recall": 0.18461538461538463,
+          "recall_during": 0.18461538461538463,
+          "median_delay_s": 0.5,
+          "p90_delay_s": 17.7
+        },
+        "temperature_drift": {
+          "category": "gradual",
+          "episodes": 88,
+          "detected": 0,
+          "recall": 0.0,
+          "recall_during": 0.0,
+          "median_delay_s": null,
+          "p90_delay_s": null
+        },
+        "vibration_degradation": {
+          "category": "gradual",
+          "episodes": 72,
+          "detected": 3,
+          "recall": 0.041666666666666664,
+          "recall_during": 0.041666666666666664,
+          "median_delay_s": 1130.0,
+          "p90_delay_s": 2290.0
+        }
+      }
+    },
+    "zscore": {
+      "alerts": 464,
+      "precision": 0.9870689655172413,
+      "recall": 0.844488188976378,
+      "false_positive_rate": 9.925047693989606e-07,
+      "false_alerts_per_device_hour": 0.016666666666666666,
+      "median_delay_s": 0.0,
+      "by_type": {
+        "temperature_spike": {
+          "category": "sudden",
+          "episodes": 109,
+          "detected": 108,
+          "recall": 0.9908256880733946,
+          "recall_during": 0.9908256880733946,
+          "median_delay_s": 0.0,
+          "p90_delay_s": 0.0
+        },
+        "vibration_burst": {
+          "category": "sudden",
+          "episodes": 92,
+          "detected": 92,
+          "recall": 1.0,
+          "recall_during": 1.0,
+          "median_delay_s": 0.0,
+          "p90_delay_s": 0.0
+        },
+        "pressure_drop": {
+          "category": "sudden",
+          "episodes": 82,
+          "detected": 80,
+          "recall": 0.975609756097561,
+          "recall_during": 0.975609756097561,
+          "median_delay_s": 0.0,
+          "p90_delay_s": 0.0
+        },
+        "power_surge": {
+          "category": "sudden",
+          "episodes": 65,
+          "detected": 65,
+          "recall": 1.0,
+          "recall_during": 1.0,
+          "median_delay_s": 0.0,
+          "p90_delay_s": 0.0
+        },
+        "temperature_drift": {
+          "category": "gradual",
+          "episodes": 88,
+          "detected": 83,
+          "recall": 0.9431818181818182,
+          "recall_during": 0.0,
+          "median_delay_s": 2293.0,
+          "p90_delay_s": 2660.0
+        },
+        "vibration_degradation": {
+          "category": "gradual",
+          "episodes": 72,
+          "detected": 1,
+          "recall": 0.013888888888888888,
+          "recall_during": 0.013888888888888888,
+          "median_delay_s": 456.0,
+          "p90_delay_s": 456.0
+        }
+      }
+    },
+    "cusum": {
+      "alerts": 1053,
+      "precision": 0.9753086419753086,
+      "recall": 0.7559055118110236,
+      "false_positive_rate": 4.300854000728829e-06,
+      "false_alerts_per_device_hour": 0.07222222222222222,
+      "median_delay_s": 4.0,
+      "by_type": {
+        "temperature_spike": {
+          "category": "sudden",
+          "episodes": 109,
+          "detected": 0,
+          "recall": 0.0,
+          "recall_during": 0.0,
+          "median_delay_s": null,
+          "p90_delay_s": null
+        },
+        "vibration_burst": {
+          "category": "sudden",
+          "episodes": 92,
+          "detected": 85,
+          "recall": 0.9239130434782609,
+          "recall_during": 0.9239130434782609,
+          "median_delay_s": 3.0,
+          "p90_delay_s": 3.0
+        },
+        "pressure_drop": {
+          "category": "sudden",
+          "episodes": 82,
+          "detected": 77,
+          "recall": 0.9390243902439024,
+          "recall_during": 0.926829268292683,
+          "median_delay_s": 3.0,
+          "p90_delay_s": 7.0
+        },
+        "power_surge": {
+          "category": "sudden",
+          "episodes": 65,
+          "detected": 63,
+          "recall": 0.9692307692307692,
+          "recall_during": 0.9692307692307692,
+          "median_delay_s": 3.0,
+          "p90_delay_s": 4.0
+        },
+        "temperature_drift": {
+          "category": "gradual",
+          "episodes": 88,
+          "detected": 88,
+          "recall": 1.0,
+          "recall_during": 1.0,
+          "median_delay_s": 113.5,
+          "p90_delay_s": 186.1
+        },
+        "vibration_degradation": {
+          "category": "gradual",
+          "episodes": 72,
+          "detected": 71,
+          "recall": 0.9861111111111112,
+          "recall_during": 0.9861111111111112,
+          "median_delay_s": 177.0,
+          "p90_delay_s": 333.0
+        }
+      }
+    },
+    "drift": {
+      "alerts": 441,
+      "precision": 0.9410430839002267,
+      "recall": 0.38188976377952755,
+      "false_positive_rate": 1.6707163618215837e-05,
+      "false_alerts_per_device_hour": 0.07222222222222222,
+      "median_delay_s": 329.0,
+      "by_type": {
+        "temperature_spike": {
+          "category": "sudden",
+          "episodes": 109,
+          "detected": 1,
+          "recall": 0.009174311926605505,
+          "recall_during": 0.0,
+          "median_delay_s": 3.0,
+          "p90_delay_s": 3.0
+        },
+        "vibration_burst": {
+          "category": "sudden",
+          "episodes": 92,
+          "detected": 0,
+          "recall": 0.0,
+          "recall_during": 0.0,
+          "median_delay_s": null,
+          "p90_delay_s": null
+        },
+        "pressure_drop": {
+          "category": "sudden",
+          "episodes": 82,
+          "detected": 37,
+          "recall": 0.45121951219512196,
+          "recall_during": 0.024390243902439025,
+          "median_delay_s": 83.0,
+          "p90_delay_s": 97.2
+        },
+        "power_surge": {
+          "category": "sudden",
+          "episodes": 65,
+          "detected": 0,
+          "recall": 0.0,
+          "recall_during": 0.0,
+          "median_delay_s": null,
+          "p90_delay_s": null
+        },
+        "temperature_drift": {
+          "category": "gradual",
+          "episodes": 88,
+          "detected": 88,
+          "recall": 1.0,
+          "recall_during": 1.0,
+          "median_delay_s": 317.5,
+          "p90_delay_s": 469.2
+        },
+        "vibration_degradation": {
+          "category": "gradual",
+          "episodes": 72,
+          "detected": 68,
+          "recall": 0.9444444444444444,
+          "recall_during": 0.9444444444444444,
+          "median_delay_s": 451.5,
+          "p90_delay_s": 728.3
+        }
+      }
+    }
+  },
+  "runs": [
+    {
+      "seed": 1,
+      "events": 432000,
+      "normal_samples": 2012223,
+      "episodes": 167,
+      "device_hours": 120.0,
+      "engine_seconds": 13.36422109999694
+    },
+    {
+      "seed": 2,
+      "events": 432000,
+      "normal_samples": 2008669,
+      "episodes": 173,
+      "device_hours": 120.0,
+      "engine_seconds": 13.043715200008592
+    },
+    {
+      "seed": 3,
+      "events": 432000,
+      "normal_samples": 2024419,
+      "episodes": 168,
+      "device_hours": 120.0,
+      "engine_seconds": 13.315961200001766
+    }
+  ]
+}

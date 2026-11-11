@@ -1,0 +1,222 @@
+name: streampulse
+
+x-spark-env: &spark-env
+  TZ: UTC
+  KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+  POSTGRES_HOST: postgres
+  POSTGRES_PORT: 5432
+  POSTGRES_DB: ${POSTGRES_DB:-streampulse}
+  POSTGRES_USER: ${POSTGRES_USER:-streampulse}
+  POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-streampulse}
+
+services:
+  # ------------------------------------------------------------------ message broker
+  kafka:
+    image: apache/kafka:4.0.2
+    hostname: kafka
+    ports:
+      - "29092:29092"
+    environment:
+      CLUSTER_ID: 5L6g3nShT-eMCtK--X86sw
+      KAFKA_NODE_ID: 1
+      KAFKA_PROCESS_ROLES: broker,controller            # KRaft: no ZooKeeper
+      KAFKA_CONTROLLER_QUORUM_VOTERS: 1@kafka:9093
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092,CONTROLLER://0.0.0.0:9093,EXTERNAL://0.0.0.0:29092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,EXTERNAL://localhost:29092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,CONTROLLER:PLAINTEXT,EXTERNAL:PLAINTEXT
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_LOG_DIRS: /var/lib/kafka/data
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "false"
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_SHARE_COORDINATOR_STATE_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_SHARE_COORDINATOR_STATE_TOPIC_MIN_ISR: 1
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      KAFKA_HEAP_OPTS: "-Xms512m -Xmx512m"
+    volumes:
+      - kafka-data:/var/lib/kafka/data
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/kafka/bin/kafka-broker-api-versions.sh --bootstrap-server localhost:9092 > /dev/null 2>&1"]
+      interval: 10s
+      timeout: 10s
+      retries: 12
+      start_period: 15s
+
+  kafka-init:
+    image: apache/kafka:4.0.2
+    depends_on:
+      kafka:
+        condition: service_healthy
+    entrypoint: ["/bin/bash", "-c"]
+    command:
+      - |
+        set -e
+        for t in raw-telemetry validated-telemetry invalid-telemetry anomaly-events; do
+          /opt/kafka/bin/kafka-topics.sh --bootstrap-server kafka:9092 --create --if-not-exists \
+            --topic "$$t" --partitions ${KAFKA_PARTITIONS:-6} --replication-factor 1 \
+            --config retention.ms=${KAFKA_RETENTION_MS:-86400000} --config cleanup.policy=delete
+        done
+        # Rejected records are kept for a week for forensics.
+        /opt/kafka/bin/kafka-configs.sh --bootstrap-server kafka:9092 --alter --entity-type topics \
+          --entity-name invalid-telemetry --add-config retention.ms=604800000
+        /opt/kafka/bin/kafka-topics.sh --bootstrap-server kafka:9092 --describe
+    restart: "no"
+
+  # ------------------------------------------------------------------------ database
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-streampulse}
+      POSTGRES_USER: ${POSTGRES_USER:-streampulse}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-streampulse}
+      TZ: UTC
+    ports:
+      - "${POSTGRES_HOST_PORT:-5432}:5432"
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/001_schema.sql:ro
+      - ./database/migrations:/docker-entrypoint-initdb.d/migrations:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  # ------------------------------------------------------------------- spark cluster
+  spark-master:
+    build: { context: ., dockerfile: docker/spark.Dockerfile }
+    image: streampulse/spark:latest
+    hostname: spark-master
+    command: ["/opt/spark/bin/spark-class", "org.apache.spark.deploy.master.Master",
+              "--host", "spark-master", "--port", "7077", "--webui-port", "8080"]
+    environment:
+      TZ: UTC
+      SPARK_NO_DAEMONIZE: "true"
+    ports:
+      - "${SPARK_UI_PORT:-8081}:8080"
+
+  spark-worker:
+    image: streampulse/spark:latest
+    depends_on: [spark-master]
+    command: ["/opt/spark/bin/spark-class", "org.apache.spark.deploy.worker.Worker",
+              "spark://spark-master:7077",
+              "--cores", "${SPARK_WORKER_CORES:-2}", "--memory", "${SPARK_WORKER_MEMORY:-2g}"]
+    environment:
+      <<: *spark-env
+      SPARK_NO_DAEMONIZE: "true"
+    volumes:
+      # Executors write state-store files, so they share the checkpoint volume with the driver.
+      - spark-checkpoints:/opt/streampulse/checkpoints
+
+  stream-processor:
+    image: streampulse/spark:latest
+    hostname: stream-processor
+    depends_on:
+      kafka-init:
+        condition: service_completed_successfully
+      postgres:
+        condition: service_healthy
+      spark-worker:
+        condition: service_started
+    command:
+      - /opt/spark/bin/spark-submit
+      - --master
+      - spark://spark-master:7077
+      - --deploy-mode
+      - client
+      - --conf
+      - spark.driver.host=stream-processor
+      - --conf
+      - spark.driver.bindAddress=0.0.0.0
+      - --conf
+      - spark.driver.port=7078
+      - --conf
+      - spark.blockManager.port=7079
+      - --conf
+      - spark.driver.memory=${SPARK_DRIVER_MEMORY:-1g}
+      - --conf
+      - spark.executor.memory=${SPARK_EXECUTOR_MEMORY:-1g}
+      - --conf
+      - spark.executor.cores=${SPARK_WORKER_CORES:-2}
+      - --conf
+      - spark.cores.max=${SPARK_WORKER_CORES:-2}
+      - --conf
+      - spark.executorEnv.TZ=UTC
+      - --conf
+      - spark.executorEnv.POSTGRES_HOST=postgres
+      - /opt/streampulse/streaming/main.py
+    environment:
+      <<: *spark-env
+      SPARK_CHECKPOINT_ROOT: /opt/streampulse/checkpoints
+      # Number of state-store partitions per stateful operator. Fixed for the lifetime of a
+      # checkpoint: changing it requires `make reset-checkpoints`.
+      SPARK_SHUFFLE_PARTITIONS: ${SPARK_SHUFFLE_PARTITIONS:-2}
+      STATE_STORE_PROVIDER: ${STATE_STORE_PROVIDER:-hdfs}       # hdfs | rocksdb
+      WINDOW_DURATION: ${WINDOW_DURATION:-1 minute}
+      WINDOW_SLIDE: ${WINDOW_SLIDE:-15 seconds}
+      WATERMARK_DELAY: ${WATERMARK_DELAY:-2 minutes}
+    ports:
+      - "4040:4040"
+    volumes:
+      - spark-checkpoints:/opt/streampulse/checkpoints
+    restart: on-failure
+
+  # ------------------------------------------------------------------------- producer
+  producer:
+    build: { context: ., dockerfile: docker/producer.Dockerfile }
+    image: streampulse/producer:latest
+    depends_on:
+      kafka-init:
+        condition: service_completed_successfully
+      postgres:
+        condition: service_healthy
+    environment:
+      TZ: UTC
+      KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+      POSTGRES_HOST: postgres
+      POSTGRES_DB: ${POSTGRES_DB:-streampulse}
+      POSTGRES_USER: ${POSTGRES_USER:-streampulse}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-streampulse}
+      SIM_AUTOSTART: ${SIM_AUTOSTART:-true}
+      SIM_DEVICES: ${SIM_DEVICES:-20}
+      SIM_RATE: ${SIM_RATE:-100}
+      SIM_SEED: ${SIM_SEED:-42}
+      SIM_ANOMALY_RATE: ${SIM_ANOMALY_RATE:-2.0}
+      SIM_INTENSITY: ${SIM_INTENSITY:-1.0}
+    restart: on-failure
+
+  # ------------------------------------------------------------------------------ api
+  api:
+    build: { context: ., dockerfile: docker/api.Dockerfile }
+    image: streampulse/api:latest
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      TZ: UTC
+      POSTGRES_HOST: postgres
+      POSTGRES_DB: ${POSTGRES_DB:-streampulse}
+      POSTGRES_USER: ${POSTGRES_USER:-streampulse}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-streampulse}
+    ports:
+      - "${API_PORT:-8000}:8000"
+    restart: on-failure
+
+  # ------------------------------------------------------------------------ dashboard
+  dashboard:
+    image: nginx:1.27-alpine
+    depends_on:
+      api:
+        condition: service_healthy
+    volumes:
+      - ./dashboard:/usr/share/nginx/html:ro
+      - ./docker/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    ports:
+      - "${DASHBOARD_PORT:-8080}:80"
+
+volumes:
+  kafka-data:
+  pg-data:
+  spark-checkpoints:

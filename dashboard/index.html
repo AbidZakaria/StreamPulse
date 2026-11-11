@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>StreamPulse Engine</title>
+  <meta name="description" content="Real-time telemetry pipeline and anomaly detection monitor">
+  <link rel="preload" href="fonts/barlow-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/barlow-600.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231E2326'/%3E%3Cpath d='M4 20h6l3-10 5 14 3-8h7' fill='none' stroke='%23EEF1EF' stroke-width='2.4'/%3E%3C/svg%3E">
+</head>
+<body>
+  <svg width="0" height="0" class="defs" aria-hidden="true">
+    <defs>
+      <pattern id="hatch" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <line x1="0" y1="0" x2="0" y2="4" stroke="currentColor" stroke-width="1.6"/>
+      </pattern>
+      <pattern id="crosshatch" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <path d="M0 0V4M0 0H4" stroke="currentColor" stroke-width="1.4"/>
+      </pattern>
+    </defs>
+  </svg>
+
+  <div class="shell">
+    <aside class="rail">
+      <div class="brand">
+        <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M3 20h6l3-10 5 14 3-8h9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/></svg>
+        <div>
+          <div class="brand-name">StreamPulse</div>
+          <div class="brand-sub">Engine</div>
+        </div>
+      </div>
+      <nav class="nav" aria-label="Views">
+        <a href="#overview" data-view="overview">Overview</a>
+        <a href="#pipeline" data-view="pipeline">Pipeline</a>
+        <a href="#devices" data-view="devices">Devices</a>
+        <a href="#alerts" data-view="alerts">Alerts</a>
+        <a href="#simulator" data-view="simulator">Simulator</a>
+      </nav>
+      <div class="rail-foot">
+        <div class="live" id="live-status" role="status" aria-live="polite">
+          <span class="dot" data-state="unknown"></span><span class="live-text">Connecting…</span>
+        </div>
+        <div class="rail-note">Telemetry is simulated. Seeded, reproducible, labelled synthetic.</div>
+      </div>
+    </aside>
+
+    <main class="main" id="main" tabindex="-1">
+      <!-- ============================================================== overview -->
+      <section class="view" id="view-overview" data-view="overview">
+        <header class="view-head">
+          <h1>Overview</h1>
+          <p class="lede">Health of the streaming pipeline and the newest detections across the fleet.</p>
+        </header>
+        <dl class="titleblock" id="ov-titleblock"></dl>
+        <div class="grid-2-1">
+          <figure class="sheet">
+            <figcaption class="sheet-head">
+              <h2>Throughput · events/s</h2>
+              <span class="legend" id="ov-throughput-legend"></span>
+            </figcaption>
+            <div class="chart" id="ov-throughput" data-height="240"></div>
+          </figure>
+          <section class="sheet">
+            <header class="sheet-head"><h2>Streaming queries</h2></header>
+            <table class="table" id="ov-queries">
+              <thead><tr><th>Query</th><th>State</th><th class="num">Last batch</th><th class="num">Duration</th></tr></thead>
+              <tbody><tr class="empty-row"><td colspan="10">Loading…</td></tr></tbody>
+            </table>
+            <p class="foot-note" id="ov-producer"></p>
+          </section>
+        </div>
+        <section class="sheet">
+          <header class="sheet-head">
+            <h2>Latest alerts</h2>
+            <a class="link" href="#alerts">Open alert explorer</a>
+          </header>
+          <table class="table table-alerts" id="ov-alerts">
+            <thead><tr><th><span class="sr">Device alert number</span></th><th>Severity</th><th>Detected</th><th>Device</th><th>Metric</th><th>Algorithm</th><th>Finding</th><th>Status</th></tr></thead>
+            <tbody><tr class="empty-row"><td colspan="10">Loading…</td></tr></tbody>
+          </table>
+        </section>
+      </section>
+
+      <!-- ============================================================== pipeline -->
+      <section class="view" id="view-pipeline" data-view="pipeline" hidden>
+        <header class="view-head">
+          <h1>Pipeline</h1>
+          <p class="lede">Kafka → Spark Structured Streaming → PostgreSQL. One row per micro-batch, per query.</p>
+          <div class="controls">
+            <label class="field-inline">Window
+              <select id="pl-window">
+                <option value="15">15 min</option>
+                <option value="60">1 hour</option>
+                <option value="360">6 hours</option>
+              </select>
+            </label>
+          </div>
+        </header>
+        <div class="grid-2">
+          <figure class="sheet">
+            <figcaption class="sheet-head"><h2>Input rate by query · rows/s</h2><span class="legend" id="pl-rate-legend"></span></figcaption>
+            <div class="chart" id="pl-rate" data-height="220"></div>
+          </figure>
+          <figure class="sheet">
+            <figcaption class="sheet-head"><h2>Micro-batch duration · s</h2><span class="legend" id="pl-duration-legend"></span></figcaption>
+            <div class="chart" id="pl-duration" data-height="220"></div>
+          </figure>
+          <figure class="sheet">
+            <figcaption class="sheet-head"><h2>Latency · s</h2><span class="legend" id="pl-latency-legend"></span></figcaption>
+            <div class="chart" id="pl-latency" data-height="220"></div>
+          </figure>
+          <section class="sheet">
+            <header class="sheet-head"><h2>Rejected records, by reason</h2></header>
+            <div id="pl-reasons" class="bars"></div>
+          </section>
+        </div>
+        <section class="sheet">
+          <header class="sheet-head"><h2>Dead-letter queue</h2><span class="muted">Also published to <code>invalid-telemetry</code></span></header>
+          <table class="table" id="pl-deadletters">
+            <thead><tr><th>Received</th><th>Reason</th><th>Kafka position</th><th>Payload</th></tr></thead>
+            <tbody><tr class="empty-row"><td colspan="10">Loading…</td></tr></tbody>
+          </table>
+        </section>
+      </section>
+
+      <!-- =============================================================== devices -->
+      <section class="view" id="view-devices" data-view="devices" hidden>
+        <header class="view-head">
+          <h1>Devices</h1>
+          <p class="lede">Pick a device from the selector or the fleet table. Numbered balloons mark each alert at its onset, numbered per device.</p>
+        </header>
+        <section class="device-detail" id="dv-detail" hidden>
+          <header class="sheet-head detail-head">
+            <h2 id="dv-title"></h2>
+            <div class="controls">
+              <label class="field-inline">Device <select id="dv-select" aria-label="Device"></select></label>
+              <div class="segmented" role="group" aria-label="Time range" id="dv-range">
+                <button type="button" data-min="30">30 min</button>
+                <button type="button" data-min="60" aria-pressed="true">1 h</button>
+                <button type="button" data-min="180">3 h</button>
+              </div>
+            </div>
+          </header>
+          <div class="grid-2-1">
+            <div class="sheet stack" id="dv-charts"></div>
+            <section class="sheet">
+              <header class="sheet-head"><h2>Alerts in range</h2></header>
+              <ol class="callout-list" id="dv-alerts"></ol>
+            </section>
+          </div>
+        </section>
+        <h2 class="fleet-head" id="dv-fleet-head">Fleet</h2>
+        <section class="sheet" aria-labelledby="dv-fleet-head">
+          <table class="table table-fleet" id="dv-fleet">
+            <thead><tr>
+              <th>Device</th><th>Plant</th><th>Type</th>
+              <th class="num">Temp °C</th><th class="num">Vibration mm/s</th><th class="num">Pressure kPa</th>
+              <th class="num">RPM</th><th class="num">Power kW</th><th>Open alerts</th><th class="num">Last window</th>
+            </tr></thead>
+            <tbody><tr class="empty-row"><td colspan="10">Loading…</td></tr></tbody>
+          </table>
+          <p class="foot-note" id="dv-fleet-note"></p>
+        </section>
+      </section>
+
+      <!-- ================================================================ alerts -->
+      <section class="view" id="view-alerts" data-view="alerts" hidden>
+        <header class="view-head">
+          <h1>Alerts</h1>
+          <p class="lede">Detections that passed de-duplication and cooldown. An alert is statistical evidence; only an operator confirms a failure.</p>
+        </header>
+        <form class="filters sheet" id="al-filters">
+          <fieldset>
+            <legend>Severity</legend>
+            <label class="chip"><input type="checkbox" name="severity" value="critical" checked><span>Critical</span></label>
+            <label class="chip"><input type="checkbox" name="severity" value="high" checked><span>High</span></label>
+            <label class="chip"><input type="checkbox" name="severity" value="medium" checked><span>Medium</span></label>
+            <label class="chip"><input type="checkbox" name="severity" value="low" checked><span>Low</span></label>
+          </fieldset>
+          <label class="field">Algorithm
+            <select name="algorithm">
+              <option value="">All</option><option value="threshold">Threshold</option><option value="zscore">Z-score</option>
+              <option value="cusum">CUSUM</option><option value="drift">Drift</option>
+            </select>
+          </label>
+          <label class="field">Status
+            <select name="status">
+              <option value="">All</option><option value="open">Open</option><option value="acknowledged">Acknowledged</option><option value="resolved">Resolved</option>
+            </select>
+          </label>
+          <label class="field">Device
+            <select name="device_id"><option value="">All devices</option></select>
+          </label>
+          <label class="field">Range
+            <select name="hours">
+              <option value="1">Last hour</option><option value="6">Last 6 hours</option><option value="24" selected>Last 24 hours</option><option value="168">Last 7 days</option>
+            </select>
+          </label>
+        </form>
+        <div class="grid-2-1">
+          <section class="sheet">
+            <header class="sheet-head"><h2 id="al-count">Alerts</h2>
+              <div class="pager"><button type="button" class="btn btn-quiet" id="al-prev">Newer</button><button type="button" class="btn btn-quiet" id="al-next">Older</button></div>
+            </header>
+            <table class="table table-alerts selectable" id="al-table">
+              <thead><tr><th>Severity</th><th>Detected</th><th>Device</th><th>Metric</th><th>Algorithm</th><th>Kind</th><th>Status</th></tr></thead>
+              <tbody><tr class="empty-row"><td colspan="10">Loading…</td></tr></tbody>
+            </table>
+          </section>
+          <aside class="sheet alert-detail" id="al-detail" aria-live="polite">
+            <p class="empty">Select an alert to read its reasoning and act on it.</p>
+          </aside>
+        </div>
+        <div class="grid-2">
+          <section class="sheet">
+            <header class="sheet-head"><h2>Distribution</h2><span class="muted" id="al-dist-range"></span></header>
+            <div id="al-distribution" class="dist"></div>
+          </section>
+          <section class="sheet">
+            <header class="sheet-head"><h2>Live evaluation against injected ground truth</h2></header>
+            <table class="table" id="al-eval">
+              <thead><tr><th>Algorithm</th><th class="num">Alerts</th><th class="num">Precision</th><th class="num">Recall</th><th class="num">Mean delay</th></tr></thead>
+              <tbody><tr class="empty-row"><td colspan="10">Loading…</td></tr></tbody>
+            </table>
+            <p class="foot-note">An alert counts as correct when it falls inside an anomaly the simulator injected on the same device (episode end + 3 min grace). Recall counts finished episodes only. Alert and episode times match within 1 s.</p>
+          </section>
+        </div>
+      </section>
+
+      <!-- ============================================================= simulator -->
+      <section class="view" id="view-simulator" data-view="simulator" hidden>
+        <header class="view-head">
+          <h1>Simulator</h1>
+          <p class="lede">The producer polls these settings every second. Changing any value restarts the simulated fleet with a new seed run.</p>
+        </header>
+        <div class="grid-2-1">
+          <form class="sheet sim-form" id="sim-form">
+            <header class="sheet-head"><h2>Telemetry generation</h2></header>
+            <div class="form-grid">
+              <label class="field">Devices<input type="number" name="devices" min="1" max="1000" step="1" required></label>
+              <label class="field">Rate, events / s<input type="number" name="rate" min="1" max="50000" step="1" required></label>
+              <label class="field">Anomalies / device-hour<input type="number" name="anomaly_rate" min="0" max="60" step="0.1" required></label>
+              <label class="field">Anomaly intensity<input type="number" name="intensity" min="0.1" max="5" step="0.1" required></label>
+              <label class="field">Random seed<input type="number" name="seed" step="1" required></label>
+              <label class="check"><input type="checkbox" name="data_quality"><span>Inject data-quality faults<small>duplicates, late and out-of-order events, malformed records, missing values</small></span></label>
+            </div>
+            <div class="actions">
+              <button type="submit" class="btn btn-primary" id="sim-start">Start</button>
+              <button type="button" class="btn" id="sim-stop">Stop</button>
+              <span class="form-msg" id="sim-msg" role="status"></span>
+            </div>
+          </form>
+          <section class="sheet">
+            <header class="sheet-head"><h2>Producer</h2></header>
+            <dl class="facts" id="sim-state"></dl>
+          </section>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="charts.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

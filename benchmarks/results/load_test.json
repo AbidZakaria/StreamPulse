@@ -1,0 +1,346 @@
+{
+  "measured_at": "2026-11-10T10:16:46.130555+00:00",
+  "config": {
+    "api": "http://localhost:8000",
+    "rates": [
+      100.0,
+      500.0,
+      1000.0,
+      2000.0,
+      4000.0,
+      8000.0
+    ],
+    "devices": 50,
+    "warmup": 90,
+    "measure": 120,
+    "restore_rate": 100,
+    "out": "C:\\Users\\zaki\\AppData\\Local\\Claude-Data\\claude_pzs8sxrjxfjjc\\scratch-workspaces\\5176ea35-54ad-47de-8c51-f6aafae24678\\73925607-8a64-4e01-9d2d-422b06ed6349\\scratch-2026-11-10-cf03d6\\StreamPulse-Engine\\benchmarks\\results\\load_test.json",
+    "note": "4000 and 8000 ev/s measured in a second run (warm-up 60 s, window 90 s)"
+  },
+  "host": {
+    "os": "Windows-10-10.0.19045-SP0",
+    "machine": "AMD64",
+    "docker_cpus": "4",
+    "docker_mem": "8263348224"
+  },
+  "results": [
+    {
+      "window_s": 120.000695,
+      "throughput_eps": 100.79941620338116,
+      "detector_eps": 99.51609030264368,
+      "processing_latency_ms": 2491.6872413590663,
+      "event_to_detection_ms": 7023.31064553992,
+      "event_to_detection_p95_ms": 8078.8433631316675,
+      "lag_first_third_ms": 6993.002910353058,
+      "lag_last_third_ms": 6970.32649337013,
+      "alert_persist_latency_ms": 7128.002428571429,
+      "alerts": 7,
+      "batch_ms": {
+        "validator": 1587.5925925925926,
+        "aggregator": 3890.4166666666665,
+        "detector": 3118.7916666666665
+      },
+      "batch_max_ms": {
+        "validator": 4235,
+        "aggregator": 4281,
+        "detector": 3932
+      },
+      "validator_batches": 54,
+      "target_rate": 100.0,
+      "producer_rate": 100.46,
+      "resources": {
+        "spark-worker": {
+          "cpu_pct_mean": 56.659,
+          "cpu_pct_max": 145.4,
+          "mem_mib_max": 1284.096
+        },
+        "stream-processor": {
+          "cpu_pct_mean": 50.832,
+          "cpu_pct_max": 104.21,
+          "mem_mib_max": 1107.968
+        },
+        "kafka": {
+          "cpu_pct_mean": 159.064,
+          "cpu_pct_max": 191.18,
+          "mem_mib_max": 860.3
+        },
+        "postgres": {
+          "cpu_pct_mean": 2.506,
+          "cpu_pct_max": 7.25,
+          "mem_mib_max": 50.96
+        },
+        "producer": {
+          "cpu_pct_mean": 2.989,
+          "cpu_pct_max": 3.97,
+          "mem_mib_max": 29.0
+        }
+      },
+      "sustainable": true
+    },
+    {
+      "window_s": 120.000751,
+      "throughput_eps": 500.95519818871804,
+      "detector_eps": 496.6718916617447,
+      "processing_latency_ms": 2648.2900046851714,
+      "event_to_detection_ms": 6976.434684944191,
+      "event_to_detection_p95_ms": 7891.537981370422,
+      "lag_first_third_ms": 6856.887379134476,
+      "lag_last_third_ms": 7045.60441865549,
+      "alert_persist_latency_ms": 7143.387375,
+      "alerts": 8,
+      "batch_ms": {
+        "validator": 1697.7916666666667,
+        "aggregator": 4173.916666666667,
+        "detector": 3063.875
+      },
+      "batch_max_ms": {
+        "validator": 4388,
+        "aggregator": 4359,
+        "detector": 4037
+      },
+      "validator_batches": 48,
+      "target_rate": 500.0,
+      "producer_rate": 501.25,
+      "resources": {
+        "spark-worker": {
+          "cpu_pct_mean": 40.329,
+          "cpu_pct_max": 103.94,
+          "mem_mib_max": 1776.64
+        },
+        "stream-processor": {
+          "cpu_pct_mean": 47.041000000000004,
+          "cpu_pct_max": 139.55,
+          "mem_mib_max": 1118.208
+        },
+        "kafka": {
+          "cpu_pct_mean": 9.392,
+          "cpu_pct_max": 12.2,
+          "mem_mib_max": 835.4
+        },
+        "postgres": {
+          "cpu_pct_mean": 3.262,
+          "cpu_pct_max": 10.79,
+          "mem_mib_max": 51.01
+        },
+        "producer": {
+          "cpu_pct_mean": 5.062,
+          "cpu_pct_max": 5.87,
+          "mem_mib_max": 30.68
+        }
+      },
+      "sustainable": true
+    },
+    {
+      "window_s": 120.001099,
+      "throughput_eps": 1001.8074917797212,
+      "detector_eps": 993.8408980737752,
+      "processing_latency_ms": 2672.8929746295476,
+      "event_to_detection_ms": 7185.407028016073,
+      "event_to_detection_p95_ms": 9479.05548144583,
+      "lag_first_third_ms": 6924.107145571259,
+      "lag_last_third_ms": 7350.6728664714565,
+      "alert_persist_latency_ms": 7135.4768,
+      "alerts": 10,
+      "batch_ms": {
+        "validator": 1748.0416666666667,
+        "aggregator": 4355.25,
+        "detector": 3098.625
+      },
+      "batch_max_ms": {
+        "validator": 4588,
+        "aggregator": 4586,
+        "detector": 4212
+      },
+      "validator_batches": 48,
+      "target_rate": 1000.0,
+      "producer_rate": 1002.63,
+      "resources": {
+        "spark-worker": {
+          "cpu_pct_mean": 46.551,
+          "cpu_pct_max": 136.21,
+          "mem_mib_max": 1712.128
+        },
+        "stream-processor": {
+          "cpu_pct_mean": 37.546,
+          "cpu_pct_max": 66.17,
+          "mem_mib_max": 1187.84
+        },
+        "kafka": {
+          "cpu_pct_mean": 24.822,
+          "cpu_pct_max": 65.28,
+          "mem_mib_max": 948.8
+        },
+        "postgres": {
+          "cpu_pct_mean": 2.7720000000000002,
+          "cpu_pct_max": 8.89,
+          "mem_mib_max": 57.73
+        },
+        "producer": {
+          "cpu_pct_mean": 6.822,
+          "cpu_pct_max": 7.64,
+          "mem_mib_max": 32.86
+        }
+      },
+      "sustainable": true
+    },
+    {
+      "window_s": 120.000552,
+      "throughput_eps": 2003.8491156274015,
+      "detector_eps": 2020.1157074677458,
+      "processing_latency_ms": 2839.3894882044788,
+      "event_to_detection_ms": 8522.657567440663,
+      "event_to_detection_p95_ms": 10652.554886742602,
+      "lag_first_third_ms": 8003.0883676176845,
+      "lag_last_third_ms": 9168.742566751778,
+      "alert_persist_latency_ms": 7656.0518,
+      "alerts": 5,
+      "batch_ms": {
+        "validator": 1931.1041666666667,
+        "aggregator": 4560.916666666667,
+        "detector": 3125.7916666666665
+      },
+      "batch_max_ms": {
+        "validator": 5163,
+        "aggregator": 5045,
+        "detector": 5073
+      },
+      "validator_batches": 48,
+      "target_rate": 2000.0,
+      "producer_rate": 2005.89,
+      "resources": {
+        "spark-worker": {
+          "cpu_pct_mean": 94.364,
+          "cpu_pct_max": 229.49,
+          "mem_mib_max": 1662.976
+        },
+        "stream-processor": {
+          "cpu_pct_mean": 44.482,
+          "cpu_pct_max": 78.14,
+          "mem_mib_max": 1278.976
+        },
+        "kafka": {
+          "cpu_pct_mean": 29.046,
+          "cpu_pct_max": 109.79,
+          "mem_mib_max": 1061.888
+        },
+        "postgres": {
+          "cpu_pct_mean": 2.998,
+          "cpu_pct_max": 8.41,
+          "mem_mib_max": 56.9
+        },
+        "producer": {
+          "cpu_pct_mean": 10.45,
+          "cpu_pct_max": 11.97,
+          "mem_mib_max": 39.65
+        }
+      },
+      "sustainable": true
+    },
+    {
+      "window_s": 90.000883,
+      "throughput_eps": 4019.0494575481,
+      "detector_eps": 4297.5133921741635,
+      "processing_latency_ms": 3598.6336036753964,
+      "event_to_detection_ms": 9458.272909452027,
+      "event_to_detection_p95_ms": 12018.185079090785,
+      "lag_first_third_ms": 8607.716359591343,
+      "lag_last_third_ms": 10163.389153428332,
+      "alert_persist_latency_ms": 25734.9645,
+      "alerts": 14,
+      "batch_ms": {
+        "validator": 2584.53125,
+        "aggregator": 5163.444444444444,
+        "detector": 4179.9473684210525
+      },
+      "batch_max_ms": {
+        "validator": 7422,
+        "aggregator": 5989,
+        "detector": 6577
+      },
+      "validator_batches": 32,
+      "target_rate": 4000.0,
+      "producer_rate": 4004.125,
+      "resources": {
+        "spark-worker": {
+          "cpu_pct_mean": 148.94625,
+          "cpu_pct_max": 281.44,
+          "mem_mib_max": 1643.52
+        },
+        "stream-processor": {
+          "cpu_pct_mean": 31.695,
+          "cpu_pct_max": 83.89,
+          "mem_mib_max": 1272.832
+        },
+        "kafka": {
+          "cpu_pct_mean": 60.29,
+          "cpu_pct_max": 105.61,
+          "mem_mib_max": 1186.816
+        },
+        "postgres": {
+          "cpu_pct_mean": 4.47625,
+          "cpu_pct_max": 27.76,
+          "mem_mib_max": 54.75
+        },
+        "producer": {
+          "cpu_pct_mean": 16.69625,
+          "cpu_pct_max": 18.86,
+          "mem_mib_max": 39.89
+        }
+      },
+      "sustainable": true
+    },
+    {
+      "window_s": 90.001757,
+      "throughput_eps": 5533.191979796572,
+      "detector_eps": 5322.78497629774,
+      "processing_latency_ms": 8041.2799680468115,
+      "event_to_detection_ms": 18392.69657744312,
+      "event_to_detection_p95_ms": 24549.869214145496,
+      "lag_first_third_ms": 16580.54035244073,
+      "lag_last_third_ms": 22873.523383747117,
+      "alert_persist_latency_ms": 25828.8641875,
+      "alerts": 16,
+      "batch_ms": {
+        "validator": 7566.0,
+        "aggregator": 7788.428571428572,
+        "detector": 9858.285714285714
+      },
+      "batch_max_ms": {
+        "validator": 10891,
+        "aggregator": 9915,
+        "detector": 14978
+      },
+      "validator_batches": 9,
+      "target_rate": 8000.0,
+      "producer_rate": 8013.0875,
+      "resources": {
+        "spark-worker": {
+          "cpu_pct_mean": 249.75,
+          "cpu_pct_max": 359.72,
+          "mem_mib_max": 1662.976
+        },
+        "stream-processor": {
+          "cpu_pct_mean": 20.4375,
+          "cpu_pct_max": 46.66,
+          "mem_mib_max": 1258.496
+        },
+        "kafka": {
+          "cpu_pct_mean": 33.31875,
+          "cpu_pct_max": 101.52,
+          "mem_mib_max": 1232.896
+        },
+        "postgres": {
+          "cpu_pct_mean": 3.6,
+          "cpu_pct_max": 6.84,
+          "mem_mib_max": 55.18
+        },
+        "producer": {
+          "cpu_pct_mean": 33.925,
+          "cpu_pct_max": 59.37,
+          "mem_mib_max": 63.29
+        }
+      },
+      "sustainable": false
+    }
+  ]
+}

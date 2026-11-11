@@ -1,0 +1,55 @@
+# StreamPulse detection engine configuration.
+#
+# Every detector keeps independent state per (device, metric). Thresholds are expressed
+# in the units of each detector: physical units for `threshold`, standard deviations
+# (sigma) for `zscore`, `cusum` and `drift`.
+
+metrics: [temperature, vibration, pressure, rpm, power_consumption]
+
+threshold:
+  enabled: true
+  # Hard operating limits (physical units). Breaching them is always alert-worthy,
+  # regardless of what is "normal" for an individual device.
+  limits:
+    temperature:       {min: 5.0,   max: 92.0}
+    vibration:         {min: 0.0,   max: 6.5}
+    pressure:          {min: 85.0,  max: 118.0}
+    rpm:               {min: 900.0, max: 2100.0}
+    power_consumption: {min: 1.0,   max: 8.5}
+
+zscore:
+  enabled: true
+  warmup: 60          # samples used to learn the initial mean / variance
+  alpha: 0.01         # EWMA weight of a new sample (time constant ~ 1/alpha samples)
+  threshold: 5.0      # |z| above this is a point anomaly
+  clip: 3.0           # samples are clipped to mean +/- clip*sigma before updating the baseline
+
+cusum:
+  enabled: true
+  # warmup/h were tuned with benchmarks/detection_evaluation.py: 120/10 gave 0.77 false
+  # alerts per device-hour (baseline estimation error from a short warm-up effectively
+  # shrinks k); 300/12 gives 0.12 for ~8 s extra detection delay.
+  warmup: 300         # samples used to learn mu0 / sigma0
+  k: 0.5              # allowance (sigma units): shifts smaller than k are ignored
+  h: 12.0             # decision threshold (sigma units)
+  clip: 4.0           # robust CUSUM: per-sample increments clipped to +/- clip sigma, so
+                      # isolated spikes are left to the point detectors
+  rebaseline_after_alarm: true   # learn the new operating point after a confirmed shift
+
+drift:
+  enabled: true
+  reference_size: 300 # samples in the reference (historical) window
+  recent_size: 120    # samples in the recent window
+  check_every: 20     # evaluate the two-window test every N samples
+  location_shift: 1.5 # |median_recent - median_ref| / robust_sigma_ref
+  scale_ratio: 2.0    # robust_sigma_recent / robust_sigma_ref (or its inverse)
+  confirmations: 3    # consecutive positive checks required before raising drift
+
+alerts:
+  # Event-time cooldown per (device, metric, algorithm). A repeated alert inside the
+  # cooldown is suppressed unless its severity is higher than the last emitted one.
+  cooldown_seconds:
+    threshold: 60
+    zscore: 60
+    cusum: 300
+    drift: 900

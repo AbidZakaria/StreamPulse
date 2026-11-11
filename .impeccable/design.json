@@ -1,0 +1,644 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-10T10:53:54+00:00",
+  "title": "Design System: StreamPulse Engine",
+  "extensions": {
+    "colorMeta": {
+      "film": {
+        "role": "neutral",
+        "displayName": "Drafting Film",
+        "canonical": "#eef1ef",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242524",
+          "#404341",
+          "#5f6260",
+          "#808381",
+          "#a3a6a4",
+          "#c7cac8",
+          "#ecefed"
+        ]
+      },
+      "sheet": {
+        "role": "neutral",
+        "displayName": "Sheet",
+        "canonical": "#f8faf8",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242524",
+          "#414241",
+          "#606260",
+          "#818381",
+          "#a4a5a4",
+          "#c8cac8",
+          "#edefed"
+        ]
+      },
+      "sheet-2": {
+        "role": "neutral",
+        "displayName": "Sheet Well",
+        "canonical": "#e4e9e6",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#232624",
+          "#3f4341",
+          "#5e6260",
+          "#7f8481",
+          "#a2a6a3",
+          "#c6cac8",
+          "#eeefee"
+        ]
+      },
+      "graphite": {
+        "role": "neutral",
+        "displayName": "Graphite",
+        "canonical": "#1e2326",
+        "tonalRamp": [
+          "#0b0b0c",
+          "#212629",
+          "#3d4346",
+          "#5c6266",
+          "#7d8387",
+          "#a0a6aa",
+          "#c5cacd",
+          "#edeeef"
+        ]
+      },
+      "graphite-2": {
+        "role": "neutral",
+        "displayName": "Graphite 2",
+        "canonical": "#485158",
+        "tonalRamp": [
+          "#0a0b0c",
+          "#20262b",
+          "#3b434a",
+          "#59636a",
+          "#7a848b",
+          "#9ca7af",
+          "#c3cad0",
+          "#edeff0"
+        ]
+      },
+      "graphite-3": {
+        "role": "neutral",
+        "displayName": "Graphite 3",
+        "canonical": "#6b747a",
+        "tonalRamp": [
+          "#0a0b0c",
+          "#20262a",
+          "#3b4349",
+          "#5a6368",
+          "#7b848a",
+          "#9da7ad",
+          "#c3cacf",
+          "#edeff0"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Rule",
+        "canonical": "#c3cbc7",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#222624",
+          "#3d4441",
+          "#5c6360",
+          "#7d8481",
+          "#9fa7a3",
+          "#c5cbc8",
+          "#edefee"
+        ]
+      },
+      "rule-strong": {
+        "role": "neutral",
+        "displayName": "Rule Strong",
+        "canonical": "#8f9a95",
+        "tonalRamp": [
+          "#0a0b0b",
+          "#202724",
+          "#3b4540",
+          "#5a645f",
+          "#7b8580",
+          "#9da8a3",
+          "#c3cbc8",
+          "#edefee"
+        ]
+      },
+      "rail-ink": {
+        "role": "neutral",
+        "displayName": "Rail Ink",
+        "canonical": "#dfe5e2",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#232624",
+          "#3e4341",
+          "#5d6360",
+          "#7e8481",
+          "#a1a7a4",
+          "#c5cbc8",
+          "#eeefee"
+        ]
+      },
+      "diazo": {
+        "role": "primary",
+        "displayName": "Diazo Violet-Blue",
+        "canonical": "#3a3d9c",
+        "tonalRamp": [
+          "#090a15",
+          "#1a185b",
+          "#313290",
+          "#4d54b5",
+          "#6c77db",
+          "#8d9aff",
+          "#b6c3ff",
+          "#eaeefe"
+        ]
+      },
+      "diazo-deep": {
+        "role": "primary",
+        "displayName": "Diazo Deep",
+        "canonical": "#2e3185",
+        "tonalRamp": [
+          "#090a14",
+          "#1a1b56",
+          "#313589",
+          "#4d56ae",
+          "#6c79d4",
+          "#8d9cfa",
+          "#b7c4ff",
+          "#eaeefd"
+        ]
+      },
+      "diazo-wash": {
+        "role": "primary",
+        "displayName": "Diazo Wash",
+        "canonical": "#dfe0f1",
+        "tonalRamp": [
+          "#0b0b0d",
+          "#24242e",
+          "#40414e",
+          "#5f606e",
+          "#808190",
+          "#a3a3b4",
+          "#c7c8d8",
+          "#eeeef1"
+        ]
+      },
+      "diazo-on-graphite": {
+        "role": "primary",
+        "displayName": "Diazo on Graphite",
+        "canonical": "#a9adf0",
+        "tonalRamp": [
+          "#0a0a11",
+          "#201f47",
+          "#3a3a73",
+          "#585a96",
+          "#787bba",
+          "#9a9ee0",
+          "#c1c5f6",
+          "#eceef8"
+        ]
+      },
+      "redline": {
+        "role": "secondary",
+        "displayName": "Redline Red",
+        "canonical": "#c0291f",
+        "tonalRamp": [
+          "#150705",
+          "#580000",
+          "#8c0000",
+          "#b41912",
+          "#dc4739",
+          "#ff6d5c",
+          "#ffa695",
+          "#ffe8e4"
+        ]
+      },
+      "redline-wash": {
+        "role": "secondary",
+        "displayName": "Redline Wash",
+        "canonical": "#f6dfdc",
+        "tonalRamp": [
+          "#0d0b0a",
+          "#2e2120",
+          "#4f3d3b",
+          "#6f5c59",
+          "#917d7a",
+          "#b59f9c",
+          "#dac3c0",
+          "#f1eded"
+        ]
+      },
+      "amber": {
+        "role": "secondary",
+        "displayName": "Drafting Amber",
+        "canonical": "#a85f00",
+        "tonalRamp": [
+          "#110904",
+          "#441400",
+          "#6f2b00",
+          "#934c00",
+          "#b86e1e",
+          "#de9148",
+          "#f5bc8a",
+          "#f9ece2"
+        ]
+      },
+      "amber-wash": {
+        "role": "secondary",
+        "displayName": "Amber Wash",
+        "canonical": "#f4e6cf",
+        "tonalRamp": [
+          "#0c0b09",
+          "#2c2416",
+          "#4c402d",
+          "#6b5f4b",
+          "#8d816c",
+          "#b0a38d",
+          "#d5c7b1",
+          "#f0eeeb"
+        ]
+      },
+      "ok": {
+        "role": "secondary",
+        "displayName": "Survey Green",
+        "canonical": "#2b7149",
+        "tonalRamp": [
+          "#070d09",
+          "#002f14",
+          "#00502b",
+          "#2b7149",
+          "#4f9369",
+          "#72b78b",
+          "#a6d7b6",
+          "#e7f1ea"
+        ]
+      },
+      "ok-wash": {
+        "role": "secondary",
+        "displayName": "Green Wash",
+        "canonical": "#d9ebdf",
+        "tonalRamp": [
+          "#0a0c0a",
+          "#1e2821",
+          "#37463d",
+          "#56665b",
+          "#77877c",
+          "#99aa9f",
+          "#bdcec3",
+          "#ecefed"
+        ]
+      },
+      "sev-low": {
+        "role": "tertiary",
+        "displayName": "Severity Low (Slate)",
+        "canonical": "#5d676e",
+        "tonalRamp": [
+          "#0a0b0c",
+          "#20262b",
+          "#3a434a",
+          "#59636a",
+          "#7a848b",
+          "#9ca7ae",
+          "#c2cad0",
+          "#edeff0"
+        ]
+      },
+      "sev-medium": {
+        "role": "tertiary",
+        "displayName": "Severity Medium (Amber)",
+        "canonical": "#a85f00",
+        "tonalRamp": [
+          "#110904",
+          "#441400",
+          "#6f2b00",
+          "#934c00",
+          "#b86e1e",
+          "#de9148",
+          "#f5bc8a",
+          "#f9ece2"
+        ]
+      },
+      "sev-high": {
+        "role": "tertiary",
+        "displayName": "Severity High (Burnt Orange)",
+        "canonical": "#b5400c",
+        "tonalRamp": [
+          "#140804",
+          "#510000",
+          "#820200",
+          "#a83400",
+          "#cf582c",
+          "#f87d51",
+          "#ffaf8f",
+          "#fee9e3"
+        ]
+      },
+      "sev-critical": {
+        "role": "tertiary",
+        "displayName": "Severity Critical (Redline)",
+        "canonical": "#c0291f",
+        "tonalRamp": [
+          "#150705",
+          "#580000",
+          "#8c0000",
+          "#b41912",
+          "#dc4739",
+          "#ff6d5c",
+          "#ffa695",
+          "#ffe8e4"
+        ]
+      },
+      "series-1": {
+        "role": "tertiary",
+        "displayName": "Series 1 (Diazo)",
+        "canonical": "#3a3d9c",
+        "tonalRamp": [
+          "#090a15",
+          "#1a185b",
+          "#313290",
+          "#4d54b5",
+          "#6c77db",
+          "#8d9aff",
+          "#b6c3ff",
+          "#eaeefe"
+        ]
+      },
+      "series-2": {
+        "role": "tertiary",
+        "displayName": "Series 2 (Umber)",
+        "canonical": "#8a5a2b",
+        "tonalRamp": [
+          "#0f0a06",
+          "#3b1c00",
+          "#623500",
+          "#855526",
+          "#a87648",
+          "#cd996a",
+          "#e8c19f",
+          "#f5ede6"
+        ]
+      },
+      "series-3": {
+        "role": "tertiary",
+        "displayName": "Series 3 (Teal)",
+        "canonical": "#1d7470",
+        "tonalRamp": [
+          "#060d0c",
+          "#002e2c",
+          "#004f4c",
+          "#166f6b",
+          "#41928d",
+          "#65b5b0",
+          "#9fd6d1",
+          "#e6f1f0"
+        ]
+      },
+      "series-4": {
+        "role": "tertiary",
+        "displayName": "Series 4 (Plum)",
+        "canonical": "#7a3b69",
+        "tonalRamp": [
+          "#10090d",
+          "#3d1232",
+          "#642755",
+          "#874776",
+          "#ac6898",
+          "#d18bbc",
+          "#ebb6da",
+          "#f6ebf2"
+        ]
+      },
+      "series-5": {
+        "role": "tertiary",
+        "displayName": "Series 5 (Olive)",
+        "canonical": "#5f6a1f",
+        "tonalRamp": [
+          "#0b0c06",
+          "#232900",
+          "#3f4800",
+          "#5d681d",
+          "#7e8a41",
+          "#a0ad64",
+          "#c5d09b",
+          "#edf0e5"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The single view heading per view."
+      },
+      "figure": {
+        "displayName": "Figure",
+        "purpose": "Title-block values; tabular, unit in 500 13px graphite-2."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Sheet and plate headings."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running text and ledes (max 75ch); tables at 14px."
+      },
+      "body-sm": {
+        "displayName": "Body Small",
+        "purpose": "Foot notes, meta, form messages."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Uppercase semi-condensed captions: table headers, title-block captions, field labels, plate titles, status tags."
+      },
+      "mark": {
+        "displayName": "Mark",
+        "purpose": "Severity marks and filter chips."
+      },
+      "balloon": {
+        "displayName": "Balloon numeral",
+        "purpose": "Numbers inside drafting balloons."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "ease",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "System ease for all state transitions."
+      },
+      {
+        "name": "state",
+        "value": "160ms",
+        "purpose": "Colour and opacity changes on buttons, chips, nav and the balloon fade."
+      },
+      {
+        "name": "bar",
+        "value": "300ms",
+        "purpose": "Bar-fill width changes."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "0ms",
+        "purpose": "prefers-reduced-motion removes all transitions and the skeleton shimmer."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "split-collapse",
+        "value": "1180px"
+      },
+      {
+        "name": "rail-to-topbar",
+        "value": "900px"
+      },
+      {
+        "name": "compact",
+        "value": "640px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Default Button",
+      "kind": "button",
+      "refersTo": "button",
+      "description": "Outlined graphite button for ordinary actions.",
+      "html": "<button class=\"ds-btn\">Acknowledge</button>",
+      "css": ":host{--film:#eef1ef;--sheet:#f8faf8;--sheet-2:#e4e9e6;--graphite:#1e2326;--graphite-2:#485158;--graphite-3:#6b747a;--rule:#c3cbc7;--rule-strong:#8f9a95;--diazo:#3a3d9c;--diazo-wash:#dfe0f1;--redline:#c0291f;--redline-wash:#f6dfdc;--amber:#a85f00;--ok:#2b7149;--sev-low:#5d676e;--sev-medium:#a85f00;--sev-high:#b5400c;--sev-critical:#c0291f;--radius:2px;--ease:cubic-bezier(0.16,1,0.3,1);--font:\"Barlow\",ui-sans-serif,system-ui,sans-serif;--font-label:\"Barlow Semi Condensed\",\"Barlow\",ui-sans-serif,sans-serif} .ds-btn{font:600 14px/1 var(--font);padding:10px 16px;min-height:38px;border:1px solid var(--graphite);border-radius:var(--radius);background:#fff;color:var(--graphite);cursor:pointer;transition:background-color 160ms var(--ease),color 160ms var(--ease),border-color 160ms var(--ease)} .ds-btn:hover{background:var(--sheet-2)} .ds-btn:active{transform:translateY(1px)} .ds-btn:focus-visible{outline:2px solid var(--diazo);outline-offset:2px;} .ds-btn:disabled{opacity:.45;cursor:not-allowed;transform:none}"
+    },
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Diazo-filled button; one per action group.",
+      "html": "<button class=\"ds-btn ds-btn-primary\">Apply settings</button>",
+      "css": ":host{--film:#eef1ef;--sheet:#f8faf8;--sheet-2:#e4e9e6;--graphite:#1e2326;--graphite-2:#485158;--graphite-3:#6b747a;--rule:#c3cbc7;--rule-strong:#8f9a95;--diazo:#3a3d9c;--diazo-wash:#dfe0f1;--redline:#c0291f;--redline-wash:#f6dfdc;--amber:#a85f00;--ok:#2b7149;--sev-low:#5d676e;--sev-medium:#a85f00;--sev-high:#b5400c;--sev-critical:#c0291f;--radius:2px;--ease:cubic-bezier(0.16,1,0.3,1);--font:\"Barlow\",ui-sans-serif,system-ui,sans-serif;--font-label:\"Barlow Semi Condensed\",\"Barlow\",ui-sans-serif,sans-serif} .ds-btn{font:600 14px/1 var(--font);padding:10px 16px;min-height:38px;border:1px solid var(--graphite);border-radius:var(--radius);background:#fff;color:var(--graphite);cursor:pointer;transition:background-color 160ms var(--ease),color 160ms var(--ease),border-color 160ms var(--ease)} .ds-btn:hover{background:var(--sheet-2)} .ds-btn:active{transform:translateY(1px)} .ds-btn:focus-visible{outline:2px solid var(--diazo);outline-offset:2px;} .ds-btn:disabled{opacity:.45;cursor:not-allowed;transform:none} .ds-btn-primary{background:var(--diazo);border-color:var(--diazo);color:#fff} .ds-btn-primary:hover{background:#2e3185}"
+    },
+    {
+      "name": "Danger Button",
+      "kind": "button",
+      "refersTo": "button-danger",
+      "description": "Redline outline for stopping or failure-confirming actions.",
+      "html": "<button class=\"ds-btn ds-btn-danger\">Stop simulator</button>",
+      "css": ":host{--film:#eef1ef;--sheet:#f8faf8;--sheet-2:#e4e9e6;--graphite:#1e2326;--graphite-2:#485158;--graphite-3:#6b747a;--rule:#c3cbc7;--rule-strong:#8f9a95;--diazo:#3a3d9c;--diazo-wash:#dfe0f1;--redline:#c0291f;--redline-wash:#f6dfdc;--amber:#a85f00;--ok:#2b7149;--sev-low:#5d676e;--sev-medium:#a85f00;--sev-high:#b5400c;--sev-critical:#c0291f;--radius:2px;--ease:cubic-bezier(0.16,1,0.3,1);--font:\"Barlow\",ui-sans-serif,system-ui,sans-serif;--font-label:\"Barlow Semi Condensed\",\"Barlow\",ui-sans-serif,sans-serif} .ds-btn{font:600 14px/1 var(--font);padding:10px 16px;min-height:38px;border:1px solid var(--graphite);border-radius:var(--radius);background:#fff;color:var(--graphite);cursor:pointer;transition:background-color 160ms var(--ease),color 160ms var(--ease),border-color 160ms var(--ease)} .ds-btn:hover{background:var(--sheet-2)} .ds-btn:active{transform:translateY(1px)} .ds-btn:focus-visible{outline:2px solid var(--diazo);outline-offset:2px;} .ds-btn:disabled{opacity:.45;cursor:not-allowed;transform:none} .ds-btn-danger{color:var(--redline);border-color:var(--redline)} .ds-btn-danger:hover{background:var(--redline-wash)}"
+    },
+    {
+      "name": "Filter Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Checkbox-backed filter toggle in tracked semi-condensed caps; checked inverts to graphite.",
+      "html": "<label class=\"ds-chip\"><input type=\"checkbox\" checked><span>Critical</span></label> <label class=\"ds-chip\"><input type=\"checkbox\"><span>High</span></label>",
+      "css": ":host{--film:#eef1ef;--sheet:#f8faf8;--sheet-2:#e4e9e6;--graphite:#1e2326;--graphite-2:#485158;--graphite-3:#6b747a;--rule:#c3cbc7;--rule-strong:#8f9a95;--diazo:#3a3d9c;--diazo-wash:#dfe0f1;--redline:#c0291f;--redline-wash:#f6dfdc;--amber:#a85f00;--ok:#2b7149;--sev-low:#5d676e;--sev-medium:#a85f00;--sev-high:#b5400c;--sev-critical:#c0291f;--radius:2px;--ease:cubic-bezier(0.16,1,0.3,1);--font:\"Barlow\",ui-sans-serif,system-ui,sans-serif;--font-label:\"Barlow Semi Condensed\",\"Barlow\",ui-sans-serif,sans-serif} .ds-chip{position:relative;display:inline-flex} .ds-chip input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer} .ds-chip span{font:600 12px/1 var(--font-label);text-transform:uppercase;letter-spacing:.06em;padding:8px 10px;border:1px solid var(--rule-strong);border-radius:var(--radius);color:var(--graphite-2);background:#fff;transition:background-color 160ms var(--ease),color 160ms var(--ease)} .ds-chip input:checked+span{background:var(--graphite);border-color:var(--graphite);color:#fff} .ds-chip input:focus-visible+span{outline:2px solid var(--diazo);outline-offset:2px;}"
+    },
+    {
+      "name": "Select Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Labelled select with a drawn chevron; diazo focus.",
+      "html": "<label class=\"ds-field\">Device<select class=\"ds-input\"><option>sensor_017</option><option>sensor_001</option></select></label>",
+      "css": ":host{--film:#eef1ef;--sheet:#f8faf8;--sheet-2:#e4e9e6;--graphite:#1e2326;--graphite-2:#485158;--graphite-3:#6b747a;--rule:#c3cbc7;--rule-strong:#8f9a95;--diazo:#3a3d9c;--diazo-wash:#dfe0f1;--redline:#c0291f;--redline-wash:#f6dfdc;--amber:#a85f00;--ok:#2b7149;--sev-low:#5d676e;--sev-medium:#a85f00;--sev-high:#b5400c;--sev-critical:#c0291f;--radius:2px;--ease:cubic-bezier(0.16,1,0.3,1);--font:\"Barlow\",ui-sans-serif,system-ui,sans-serif;--font-label:\"Barlow Semi Condensed\",\"Barlow\",ui-sans-serif,sans-serif} .ds-field{display:inline-flex;flex-direction:column;gap:6px;font:600 11px/1.2 var(--font-label);text-transform:uppercase;letter-spacing:.08em;color:var(--graphite-2)} .ds-input{font:400 14px var(--font);font-variant-numeric:tabular-nums;color:var(--graphite);background:#fff;border:1px solid var(--rule-strong);border-radius:var(--radius);padding:7px 30px 7px 9px;min-height:36px;text-transform:none;letter-spacing:0;appearance:none;-webkit-appearance:none;cursor:pointer;background-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23485158' stroke-width='1.5'/%3E%3C/svg%3E\");background-repeat:no-repeat;background-position:right 10px center} .ds-input:hover{border-color:var(--graphite-2)} .ds-input:focus-visible{outline:2px solid var(--diazo);outline-offset:0;border-color:var(--diazo)}"
+    },
+    {
+      "name": "Rail Navigation",
+      "kind": "nav",
+      "refersTo": "nav-item",
+      "description": "Graphite rail of view links; the current view gets a lighter slab and a diazo-on-graphite left rule.",
+      "html": "<nav class=\"ds-rail\"><a href=\"#\" aria-current=\"page\">Overview</a><a href=\"#\">Pipeline</a><a href=\"#\">Devices</a><a href=\"#\">Alerts</a></nav>",
+      "css": ":host{--film:#eef1ef;--sheet:#f8faf8;--sheet-2:#e4e9e6;--graphite:#1e2326;--graphite-2:#485158;--graphite-3:#6b747a;--rule:#c3cbc7;--rule-strong:#8f9a95;--diazo:#3a3d9c;--diazo-wash:#dfe0f1;--redline:#c0291f;--redline-wash:#f6dfdc;--amber:#a85f00;--ok:#2b7149;--sev-low:#5d676e;--sev-medium:#a85f00;--sev-high:#b5400c;--sev-critical:#c0291f;--radius:2px;--ease:cubic-bezier(0.16,1,0.3,1);--font:\"Barlow\",ui-sans-serif,system-ui,sans-serif;--font-label:\"Barlow Semi Condensed\",\"Barlow\",ui-sans-serif,sans-serif} .ds-rail{display:flex;flex-direction:column;gap:2px;padding:12px;background:var(--graphite);width:216px;font:500 15px var(--font)} .ds-rail a{display:block;padding:8px 10px;border-radius:var(--radius);color:#c9d1cd;text-decoration:none;border-left:1px solid transparent;transition:background-color 160ms var(--ease),color 160ms var(--ease)} .ds-rail a:hover{background:#2a3134;color:#fff} .ds-rail a:focus-visible{outline:2px solid var(--diazo);outline-offset:2px;} .ds-rail a[aria-current=page]{background:#2d3338;color:#fff;border-left-color:#a9adf0}"
+    },
+    {
+      "name": "Title Block",
+      "kind": "card",
+      "refersTo": "sheet",
+      "description": "Ruled header row of pipeline facts: tracked caption over a tabular figure.",
+      "html": "<dl class=\"ds-tb\"><div><dt>Pipeline</dt><dd class=\"ds-ok\">Healthy</dd></div><div><dt>Ingest rate</dt><dd>109 <small>events/s</small></dd></div><div><dt>Event → detection</dt><dd>7.2 s</dd></div><div><dt>Open alerts, 24 h</dt><dd>186 <small>54 critical</small></dd></div></dl>",
+      "css": ":host{--film:#eef1ef;--sheet:#f8faf8;--sheet-2:#e4e9e6;--graphite:#1e2326;--graphite-2:#485158;--graphite-3:#6b747a;--rule:#c3cbc7;--rule-strong:#8f9a95;--diazo:#3a3d9c;--diazo-wash:#dfe0f1;--redline:#c0291f;--redline-wash:#f6dfdc;--amber:#a85f00;--ok:#2b7149;--sev-low:#5d676e;--sev-medium:#a85f00;--sev-high:#b5400c;--sev-critical:#c0291f;--radius:2px;--ease:cubic-bezier(0.16,1,0.3,1);--font:\"Barlow\",ui-sans-serif,system-ui,sans-serif;--font-label:\"Barlow Semi Condensed\",\"Barlow\",ui-sans-serif,sans-serif} .ds-tb{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin:0;background:var(--sheet);border:1px solid var(--rule-strong);border-radius:var(--radius);font-variant-numeric:tabular-nums} .ds-tb>div{padding:10px 14px 12px;border-right:1px solid var(--rule)} .ds-tb>div:last-child{border-right:0} .ds-tb dt{font:600 11px/1.2 var(--font-label);text-transform:uppercase;letter-spacing:.1em;color:var(--graphite-2);margin-bottom:6px} .ds-tb dd{margin:0;font:600 20px/1.2 var(--font);color:var(--graphite);white-space:nowrap} .ds-tb dd small{font:500 13px var(--font);color:var(--graphite-2)} .ds-tb .ds-ok{color:var(--ok)}"
+    },
+    {
+      "name": "Severity Marks",
+      "kind": "custom",
+      "refersTo": "",
+      "description": "Fill-density severity: empty, hatched, cross-hatched, solid, plus the written level in its ink.",
+      "html": "<svg width=\"0\" height=\"0\" style=\"position:absolute\" aria-hidden=\"true\"><defs><pattern id=\"ds-hatch\" width=\"4\" height=\"4\" patternUnits=\"userSpaceOnUse\" patternTransform=\"rotate(45)\"><line x1=\"0\" y1=\"0\" x2=\"0\" y2=\"4\" stroke=\"currentColor\" stroke-width=\"1.6\"/></pattern><pattern id=\"ds-crosshatch\" width=\"4\" height=\"4\" patternUnits=\"userSpaceOnUse\" patternTransform=\"rotate(45)\"><path d=\"M0 0V4M0 0H4\" stroke=\"currentColor\" stroke-width=\"1.4\"/></pattern></defs></svg><div class=\"ds-sevs\"><span class=\"ds-sev ds-sev-low\"><svg viewBox=\"0 0 12 12\" aria-hidden=\"true\"><rect x=\"0.75\" y=\"0.75\" width=\"10.5\" height=\"10.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/></svg>low</span><span class=\"ds-sev ds-sev-medium\"><svg viewBox=\"0 0 12 12\" aria-hidden=\"true\"><rect x=\"0.75\" y=\"0.75\" width=\"10.5\" height=\"10.5\" fill=\"url(#ds-hatch)\" stroke=\"currentColor\" stroke-width=\"1.5\"/></svg>medium</span><span class=\"ds-sev ds-sev-high\"><svg viewBox=\"0 0 12 12\" aria-hidden=\"true\"><rect x=\"0.75\" y=\"0.75\" width=\"10.5\" height=\"10.5\" fill=\"url(#ds-crosshatch)\" stroke=\"currentColor\" stroke-width=\"1.5\"/></svg>high</span><span class=\"ds-sev ds-sev-critical\"><svg viewBox=\"0 0 12 12\" aria-hidden=\"true\"><rect x=\"0.75\" y=\"0.75\" width=\"10.5\" height=\"10.5\" fill=\"currentColor\" stroke=\"currentColor\" stroke-width=\"1.5\"/></svg>critical</span></div>",
+      "css": ":host{--film:#eef1ef;--sheet:#f8faf8;--sheet-2:#e4e9e6;--graphite:#1e2326;--graphite-2:#485158;--graphite-3:#6b747a;--rule:#c3cbc7;--rule-strong:#8f9a95;--diazo:#3a3d9c;--diazo-wash:#dfe0f1;--redline:#c0291f;--redline-wash:#f6dfdc;--amber:#a85f00;--ok:#2b7149;--sev-low:#5d676e;--sev-medium:#a85f00;--sev-high:#b5400c;--sev-critical:#c0291f;--radius:2px;--ease:cubic-bezier(0.16,1,0.3,1);--font:\"Barlow\",ui-sans-serif,system-ui,sans-serif;--font-label:\"Barlow Semi Condensed\",\"Barlow\",ui-sans-serif,sans-serif} .ds-sevs{display:flex;gap:18px} .ds-sev{display:inline-flex;align-items:center;gap:7px;font:600 12px/1 var(--font-label);text-transform:uppercase;letter-spacing:.06em} .ds-sev svg{width:12px;height:12px} .ds-sev-low{color:var(--sev-low)} .ds-sev-medium{color:var(--sev-medium)} .ds-sev-high{color:var(--sev-high)} .ds-sev-critical{color:var(--sev-critical)}"
+    },
+    {
+      "name": "Drafting Balloon Callout",
+      "kind": "custom",
+      "refersTo": "balloon",
+      "description": "Signature: numbered balloon with a leader to the alert's onset point; hover or focus fills it and fades its siblings.",
+      "html": "<svg class=\"ds-plate\" viewBox=\"0 0 260 110\" width=\"260\" height=\"110\" role=\"img\" aria-label=\"Telemetry plate with two alert balloons\"><line x1=\"10\" y1=\"100\" x2=\"250\" y2=\"100\" stroke=\"#8f9a95\"/><line x1=\"10\" y1=\"60\" x2=\"250\" y2=\"60\" stroke=\"#c3cbc7\"/><path d=\"M10 88 L70 86 L110 84 L150 70 L190 66 L250 58\" fill=\"none\" stroke=\"#3a3d9c\" stroke-width=\"1.75\" stroke-linejoin=\"round\"/><g class=\"ds-balloon\" tabindex=\"0\" role=\"button\" aria-label=\"Alert 4\" style=\"color:#a85f00\"><line x1=\"110\" y1=\"84\" x2=\"110\" y2=\"29\" stroke=\"currentColor\"/><circle cx=\"110\" cy=\"84\" r=\"2.6\" fill=\"currentColor\"/><circle class=\"ds-ring\" cx=\"110\" cy=\"20\" r=\"9\" stroke=\"currentColor\"/><text x=\"110\" y=\"20.5\" fill=\"currentColor\">4</text></g><g class=\"ds-balloon\" tabindex=\"0\" role=\"button\" aria-label=\"Alert 5\" style=\"color:#c0291f\"><line x1=\"150\" y1=\"70\" x2=\"150\" y2=\"29\" stroke=\"currentColor\"/><circle cx=\"150\" cy=\"70\" r=\"2.6\" fill=\"currentColor\"/><circle class=\"ds-ring\" cx=\"150\" cy=\"20\" r=\"9\" stroke=\"currentColor\"/><text x=\"150\" y=\"20.5\" fill=\"currentColor\">5</text></g></svg>",
+      "css": ":host{--film:#eef1ef;--sheet:#f8faf8;--sheet-2:#e4e9e6;--graphite:#1e2326;--graphite-2:#485158;--graphite-3:#6b747a;--rule:#c3cbc7;--rule-strong:#8f9a95;--diazo:#3a3d9c;--diazo-wash:#dfe0f1;--redline:#c0291f;--redline-wash:#f6dfdc;--amber:#a85f00;--ok:#2b7149;--sev-low:#5d676e;--sev-medium:#a85f00;--sev-high:#b5400c;--sev-critical:#c0291f;--radius:2px;--ease:cubic-bezier(0.16,1,0.3,1);--font:\"Barlow\",ui-sans-serif,system-ui,sans-serif;--font-label:\"Barlow Semi Condensed\",\"Barlow\",ui-sans-serif,sans-serif} .ds-plate{background:var(--sheet);border:1px solid var(--rule);border-radius:var(--radius);overflow:visible} .ds-balloon{cursor:pointer;transition:opacity 160ms var(--ease)} .ds-balloon .ds-ring{fill:var(--sheet);stroke-width:1.5} .ds-balloon text{font:700 10.5px var(--font);text-anchor:middle;dominant-baseline:central} .ds-plate:hover .ds-balloon{opacity:.3} .ds-plate .ds-balloon:hover,.ds-plate .ds-balloon:focus-visible{opacity:1;outline:none} .ds-balloon:hover .ds-ring,.ds-balloon:focus-visible .ds-ring{fill:currentColor} .ds-balloon:hover text,.ds-balloon:focus-visible text{fill:#fff}"
+    },
+    {
+      "name": "Alert Table",
+      "kind": "custom",
+      "refersTo": "table-header",
+      "description": "Ruled table: sheet-2 caps header, hairline rows, balloon cross-reference, outlined status tag.",
+      "html": "<table class=\"ds-table\"><thead><tr><th></th><th>Severity</th><th>Device</th><th class=\"ds-num\">Value</th><th>Status</th></tr></thead><tbody><tr tabindex=\"0\"><td><span class=\"ds-nb\" style=\"color:#c0291f\">2</span></td><td class=\"ds-sv\" style=\"color:#c0291f\">Critical</td><td>sensor_014</td><td class=\"ds-num\">14.02</td><td><span class=\"ds-tag\">open</span></td></tr><tr tabindex=\"0\" aria-selected=\"true\"><td><span class=\"ds-nb\" style=\"color:#5d676e\">7</span></td><td class=\"ds-sv\" style=\"color:#5d676e\">Low</td><td>sensor_005</td><td class=\"ds-num\">2.92</td><td><span class=\"ds-tag ds-ack\">acknowledged</span></td></tr></tbody></table>",
+      "css": ":host{--film:#eef1ef;--sheet:#f8faf8;--sheet-2:#e4e9e6;--graphite:#1e2326;--graphite-2:#485158;--graphite-3:#6b747a;--rule:#c3cbc7;--rule-strong:#8f9a95;--diazo:#3a3d9c;--diazo-wash:#dfe0f1;--redline:#c0291f;--redline-wash:#f6dfdc;--amber:#a85f00;--ok:#2b7149;--sev-low:#5d676e;--sev-medium:#a85f00;--sev-high:#b5400c;--sev-critical:#c0291f;--radius:2px;--ease:cubic-bezier(0.16,1,0.3,1);--font:\"Barlow\",ui-sans-serif,system-ui,sans-serif;--font-label:\"Barlow Semi Condensed\",\"Barlow\",ui-sans-serif,sans-serif} .ds-table{border-collapse:collapse;font:400 14px var(--font);font-variant-numeric:tabular-nums;color:var(--graphite);background:var(--sheet)} .ds-table th{text-align:left;font:600 11px/1.2 var(--font-label);text-transform:uppercase;letter-spacing:.08em;color:var(--graphite-2);padding:8px 10px;border-bottom:1px solid var(--rule-strong);background:var(--sheet-2)} .ds-table td{padding:8px 10px;border-bottom:1px solid var(--rule)} .ds-table tbody tr{cursor:pointer} .ds-table tbody tr:hover td{background:#eef0f8} .ds-table tr[aria-selected=true] td{background:var(--diazo-wash)} .ds-table tr:focus-visible{outline:2px solid var(--diazo);outline-offset:-2px} .ds-num{text-align:right} .ds-sv{font:600 12px/1 var(--font-label);text-transform:uppercase;letter-spacing:.06em} .ds-nb{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;border:1.5px solid currentColor;font:700 11px var(--font)} .ds-tag{font:600 11px/1 var(--font-label);text-transform:uppercase;letter-spacing:.08em;padding:3px 6px;border:1px solid currentColor;border-radius:var(--radius);color:var(--graphite)} .ds-ack{color:var(--diazo)}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Drawing Set",
+    "overview": "The dashboard is a well-kept engineering drawing set laid on drafting film. Every view is a sheet; every number is dimensioned and referenced; every alert is an item callout with a numbered balloon. Structure comes from 1px hairline rules and nothing else: no shadows, no tinted cards, no glow. Ink is graphite, data and selection are diazo violet-blue, and redline red is reserved for what is critical or broken.\n\nDensity is operational. Tables run at 8px row padding, charts are stacked plates that share one scale and one header band, and the first thing on the Overview is a ruled title block of pipeline facts rather than a row of hero metrics. One grotesk family carries everything: Barlow for text and figures, its semi-condensed cut in tracked capitals for every label, and tabular figures for every number so columns of values align like a parts list.\n\nThe world explicitly rejects the default grey card grid with glowing neon charts and a hero-metric row. Severity is never colour alone: it is a fill-density mark (outline, hatched, cross-hatched, solid) plus a written label.",
+    "keyCharacteristics": [
+      "Cool drafting-film ground with whiter sheets and a graphite rail.",
+      "1px hairline rules as the only structure; flat at every level.",
+      "Diazo violet-blue for data, selection, focus and the one primary action.",
+      "Redline only for critical severity, errors and rejected data; amber for degraded, green for healthy.",
+      "Barlow throughout; semi-condensed tracked caps for labels; tabular figures everywhere.",
+      "Numbered drafting balloons with leader lines cross-reference alerts between charts and lists."
+    ],
+    "rules": [
+      {
+        "name": "The Redline Rule",
+        "body": "Redline marks only what is critical, failed or rejected. If nothing is wrong, no red is on screen.",
+        "section": "colors"
+      },
+      {
+        "name": "The Wash Pairing Rule",
+        "body": "Every status ink has exactly one wash (diazo-wash, redline-wash, amber-wash, ok-wash). A tinted background always pairs with its own ink, never with another hue.",
+        "section": "colors"
+      },
+      {
+        "name": "The Density, Not Hue, Rule",
+        "body": "Severity is read from the mark's fill (empty, hatched, cross-hatched, solid) and its label first; colour only reinforces it.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tabular Everywhere Rule",
+        "body": "`font-variant-numeric: tabular-nums` is set on body, inputs and chart text. Every number aligns in its column.",
+        "section": "typography"
+      },
+      {
+        "name": "The Few Sizes Rule",
+        "body": "Hierarchy comes from weight and case. Add a new size only when a role genuinely has none; the set above is the set.",
+        "section": "typography"
+      },
+      {
+        "name": "The Hairline-Only Rule",
+        "body": "Structure is a 1px rule. If an element needs separating, draw a rule; do not add a shadow, a heavier border or a tinted card.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do separate everything with 1px rule hairlines on sheet over film; keep surfaces flat.",
+      "Do set every number in tabular figures and right-align numeric columns.",
+      "Do label every caption, column header and legend in Barlow Semi Condensed 600 uppercase at 11px with 0.08em tracking.",
+      "Do encode severity as fill density (empty, hatched, cross-hatched, solid) plus the written level, in its severity ink.",
+      "Do reference each alert with the same numbered balloon on the chart and in every list that shows it, and link them on hover and focus.",
+      "Do keep diazo as the single data and selection colour; use the 2px diazo outline for every focus state.",
+      "Do keep stacked plates on identical width, margins and balloon lane so they read as one set."
+    ],
+    "donts": [
+      "Don't add box-shadows, glows or lifted cards; depth is tonal and ruled.",
+      "Don't round containers beyond 2px; circles are for balloons, onset anchors and state dots only.",
+      "Don't use redline for decoration, emphasis or branding; it means critical, error or rejected.",
+      "Don't show severity by colour alone.",
+      "Don't build a row of oversized hero metrics; pipeline facts belong in the title block at Figure size.",
+      "Don't introduce a second type family for display; hierarchy is weight and case within Barlow.",
+      "Don't present simulated telemetry as real plant data; keep the synthetic label in the rail."
+    ]
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "measured_at": "2026-11-10T10:42:35.310502+00:00",
+  "simulation": {
+    "devices": 20,
+    "rate": 100.0,
+    "seed": 42
+  },
+  "results": [
+    {
+      "scenario": "spark_kill",
+      "outage_s": 30,
+      "recovery_after_restart_s": 29.691405,
+      "checkpoint_resume": {
+        "validator": {
+          "before": 571,
+          "after": 573
+        },
+        "aggregator": {
+          "before": 156,
+          "after": 157
+        },
+        "detector": {
+          "before": 292,
+          "after": 294
+        }
+      },
+      "resumed_from_checkpoint": true,
+      "completeness": {
+        "windows_expected": 180,
+        "windows_found": 180,
+        "event_coverage": 0.9946851851851852
+      },
+      "duplicates": {
+        "alerts": 13,
+        "duplicate_keys": 0,
+        "near_duplicates_within_1s": 0
+      },
+      "failure_window": [
+        "2026-11-10T10:30:37.626465+00:00",
+        "2026-11-10T10:31:21.569378+00:00"
+      ]
+    },
+    {
+      "scenario": "kafka_restart",
+      "outage_s": 30,
+      "recovery_after_restart_s": 23.307213,
+      "checkpoint_resume": {
+        "validator": {
+          "before": 643,
+          "after": 644
+        },
+        "aggregator": {
+          "before": 176,
+          "after": 177
+        },
+        "detector": {
+          "before": 331,
+          "after": 332
+        }
+      },
+      "resumed_from_checkpoint": true,
+      "completeness": {
+        "windows_expected": 160,
+        "windows_found": 160,
+        "event_coverage": 0.9945416666666667
+      },
+      "duplicates": {
+        "alerts": 10,
+        "duplicate_keys": 0,
+        "near_duplicates_within_1s": 1
+      },
+      "failure_window": [
+        "2026-11-10T10:34:52.044583+00:00",
+        "2026-11-10T10:35:24.410107+00:00"
+      ]
+    },
+    {
+      "scenario": "postgres_restart",
+      "outage_s": 30,
+      "recovery_after_restart_s": 11.296313,
+      "checkpoint_resume": {
+        "validator": {
+          "before": 710,
+          "after": 711
+        },
+        "aggregator": {
+          "before": 196,
+          "after": 197
+        },
+        "detector": {
+          "before": 369,
+          "after": 371
+        }
+      },
+      "resumed_from_checkpoint": true,
+      "completeness": {
+        "windows_expected": 160,
+        "windows_found": 160,
+        "event_coverage": 0.9945833333333334
+      },
+      "duplicates": {
+        "alerts": 2,
+        "duplicate_keys": 0,
+        "near_duplicates_within_1s": 0
+      },
+      "failure_window": [
+        "2026-11-10T10:38:51.581482+00:00",
+        "2026-11-10T10:39:22.914847+00:00"
+      ]
+    }
+  ]
+}
